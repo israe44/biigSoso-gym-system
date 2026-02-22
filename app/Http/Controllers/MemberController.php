@@ -32,4 +32,10 @@ class MemberController extends Controller
         $member->update($request->all());
         return redirect('/'); //home page
     }
+    public function destroy($id)
+    {
+        $member = Member::find($id);
+        $member->delete();
+        return redirect('/'); 
+    }
 }

@@ -13,6 +13,12 @@
 @foreach ($members as $member)
 <p>{{ $member->name }} - {{ $member->age }} - {{ $member->phone }} - {{ $member-> membership_type }}
     <a href="/members/{{ $member->id }}/edit">Edit </a>
+
+    <form action="/members/{{ $member->id }}" method="POST" style="display: inline">
+        
+        @csrf
+        @method('DELETE')
+        <button type="submit">Delete</button>
 </p>
 @endforeach
 </body>
