@@ -18,8 +18,14 @@ class MemberController extends Controller
     }
     public function store(Request $request) //store: this function's job is to save data to the db/ Request $request -> this is the data coming from the form 
     {
+        $request->validate([
+            'name' => 'required',
+            'age' => 'required|integer', //age should be a number and it's required
+            'phone' => 'required',
+            'membership_type' => 'required',
+        ]);
         Member::create($request->all()); //uses the member model to create a new record in the db | grabs all data from the form and saves it
-        return redirect('/'); // after saving the data user will get back to home page!
+        return redirect('/')->with('success', 'Member added successfully! 💪'); // after saving the data user will get back to home page!
     }
     public function edit($id)
     {
@@ -28,14 +34,21 @@ class MemberController extends Controller
     }
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'age' => 'required|integer',
+            'phone' => 'required',
+            'membership_type' => 'required',
+        ]);
         $member = Member::find($id);
         $member->update($request->all());
-        return redirect('/'); //home page
+        return redirect('/')->with('success', 'Member updated successfully!'); //home page
     }
     public function destroy($id)
     {
         $member = Member::find($id);
         $member->delete();
-        return redirect('/'); 
+        return redirect('/')->with('success', 'Member deleted successfully! 🗑️'); 
     }
+    
 }

@@ -7,6 +7,14 @@
 </head>
 <body>
     <h1>Edit Member </h1>
+    @if ($errors->any())
+    <div>
+        @foreach (@errors->all() as $error)
+        <p style="color: red">{{ $error }}</p>
+        @endforeach
+    </div>
+    @endif
+    
     <form action="/members/{{ $member->id }}" method="POST"> 
 @csrf <!-- this is a laravel security token, it proves the form was submitted from ur website --- without it laravel will reject the form submission-->
 @method ('PUT')

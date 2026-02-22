@@ -7,6 +7,14 @@
 </head>
 <body>
     <h1>Add New Member </h1>
+    @if($errors->any()) <!-- checks if there are any errors --> 
+    <div>
+        @foreach($errors->all() as $error) <!-- gets all the errors msgs/ loops thru each one and displays it -->
+        <p style="color: red">{{ $error }}</p>
+        @endforeach
+    </div>
+    @endif
+
     <form action="/members" method="POST"> 
 @csrf <!-- this is a laravel security token, it proves the form was submitted from ur website --- without it laravel will reject the form submission-->
     <input type="text" name="name" placeholder="Name"> <br><br>
