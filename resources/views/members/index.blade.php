@@ -12,6 +12,10 @@
     @endif
     
     <a href='/members/create'>Add New Member</a>
+    <form action="/" method="GET">
+        <input type="text" name="search" placeholder="Search member...">
+        <button type="submit">Search</button>
+</form>
 <br> <br>
 
 @foreach ($members as $member)

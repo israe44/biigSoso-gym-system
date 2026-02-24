@@ -6,9 +6,14 @@ use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
-    public function index ()
+    public function index (Request $request)
     {
-        $members = Member::all(); //go to all members table in the db and get all records and store them in $members var
+        $search = $request->input('search');
+
+        $members = Member::when($search, function($query) use ($search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        })->get();
+        
         return view('members.index', compact('members')); //shows the index page but sends the $members var to the view so we can display itt
     } 
 //compact is a way of passing data from the controller to the view 
