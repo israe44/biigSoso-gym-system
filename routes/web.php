@@ -8,3 +8,6 @@ Route::post('/members', [MemberController::class, 'store']); //we're sending dat
 Route::get('members/{id}/edit', [MemberController::class, 'edit']); //{i} is a dynamic parameter meaning the URL will change depending on which member u wanna edit
 Route::put('/members/{id}', [MemberController::class, 'update']); //put is used to save the updated data to the database
 Route::delete('/members/{id}', [MemberController::class, 'destroy']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -7,6 +7,10 @@
 </head>
 <body>
     <h1>GYM Members</h1>
+    @if(session('success'))
+    <p style="color:green">{{ session('success')}} </p>
+    @endif
+    
     <a href='/members/create'>Add New Member</a>
 <br> <br>
 
@@ -15,7 +19,7 @@
     <a href="/members/{{ $member->id }}/edit">Edit </a>
 
     <form action="/members/{{ $member->id }}" method="POST" style="display: inline">
-        
+
         @csrf
         @method('DELETE')
         <button type="submit">Delete</button>
