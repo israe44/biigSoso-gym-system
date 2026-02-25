@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Member; //need to tell the controller to use the Member model 
+use App\Models\plan;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
@@ -19,7 +20,8 @@ class MemberController extends Controller
 //compact is a way of passing data from the controller to the view 
     public function create()
     {
-        return view('members.create');
+        $plans = Plan::all(); //stores all the plans in $plans var
+        return view('members.create', compact('plans')); 
     }
     public function store(Request $request) //store: this function's job is to save data to the db/ Request $request -> this is the data coming from the form 
     {
@@ -28,6 +30,7 @@ class MemberController extends Controller
             'age' => 'required|integer', //age should be a number and it's required
             'phone' => 'required',
             'membership_type' => 'required',
+            'plan_id' => 'required',
         ]);
         Member::create($request->all()); //uses the member model to create a new record in the db | grabs all data from the form and saves it
         return redirect('/')->with('success', 'Member added successfully! 💪'); // after saving the data user will get back to home page!

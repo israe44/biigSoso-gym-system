@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Add New Member </h1>
-    @if($errors->any()) <!-- checks if there are any errors --> 
+    @if($errors->any()) 
     <div>
         @foreach($errors->all() as $error) <!-- gets all the errors msgs/ loops thru each one and displays it -->
         <p style="color: red">{{ $error }}</p>
@@ -21,6 +21,12 @@
     <input type="number" name="age" placeholder="Age"> <br><br>
     <input type="text" name="phone" placeholder="Phone"> <br> <br>
     <input type="text" name="membership_type" placeholder="Membership Type"> <br> <br>
+    <select name="plan_id">
+        @foreach($plans as $plan)
+        <option value="{{ $plan->id }}"> {{ $plan->name }} - {{ $plan->price }}$ </option>
+        @endforeach
+    </select>
+     <br><br>
 <button type="submit"> Add Member </button>
 </form>
 </body>
