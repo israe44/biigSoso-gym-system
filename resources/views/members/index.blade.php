@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>GYM Members</h1>
+    
     @if(session('success'))
     <p style="color:green">{{ session('success')}} </p>
     @endif
@@ -19,13 +20,15 @@
 <br> <br>
 
 @foreach ($members as $member)
+
 <p>
     {{ $member->name }} - {{ $member->age }} - {{ $member->phone }} - {{ $member->membership_type }}
-    @if($member->plan)
-        | Plan: {{ $member->plan->name }} ({{ $member->plan->price }}$)
+    @if($member->plan) <!-- this uses the relationship we defined -->
+        Plan: {{ $member->plan->name }} ({{ $member->plan->price }}$)
     @else
-        | No plan selected
+        No plan selected
     @endif
+
     <a href="/members/{{ $member->id }}/edit">Edit </a>
     <form action="/members/{{ $member->id }}" method="POST" style="display: inline">
         @csrf
@@ -33,6 +36,8 @@
         <button type="submit">Delete</button>
     </form>
 </p>
+
 @endforeach
+
 </body>
 </html>

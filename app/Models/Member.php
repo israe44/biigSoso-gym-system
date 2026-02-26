@@ -14,7 +14,7 @@ class Member extends Model
         'plan_id',
 
     ]; //only these columns allowed to be filled nothing else 
-    public function plan()  //relationship
+    public function plan()  //relationship: connecting two models
     {
         return $this->belongsTo(Plan::class); //this member belongs to one plan
     }
