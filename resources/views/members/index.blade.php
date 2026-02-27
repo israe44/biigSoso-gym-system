@@ -42,6 +42,6 @@
 </p>
 
 @endforeach
-
+{{ $members->links () }} <!-- pagination to navigate between pages -->
 </body>
 </html>

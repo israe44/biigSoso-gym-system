@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Member; //need to tell the controller to use the Member model 
-use App\Models\plan;
+use App\Models\Plan;
 use Illuminate\Http\Request;
+
 
 class MemberController extends Controller
 {
@@ -13,7 +14,7 @@ class MemberController extends Controller
 
         $members = Member::when($search, function($query) use ($search) {
             $query->where('name', 'like', '%' . $search . '%');
-        })->get();
+        })->paginate(5);
         
         return view('members.index', compact('members')); //shows the index page but sends the $members var to the view so we can display itt
     } 
