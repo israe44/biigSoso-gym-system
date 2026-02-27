@@ -6,6 +6,10 @@
     <title>Gym members system</title>
 </head>
 <body>
+    <form action="/logout" method="POST" style="display:inline">
+    @csrf
+    <button type="submit">Logout</button>
+</form>
     <h1>GYM Members</h1>
     
     @if(session('success'))
