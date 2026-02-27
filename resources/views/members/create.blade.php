@@ -21,12 +21,14 @@
     <input type="number" name="age" placeholder="Age"> <br><br>
     <input type="text" name="phone" placeholder="Phone"> <br> <br>
     <input type="text" name="membership_type" placeholder="Membership Type"> <br> <br>
+
     <select name="plan_id">
         @foreach($plans as $plan)
         <option value="{{ $plan->id }}"> {{ $plan->name }} - {{ $plan->price }}$ </option>
         @endforeach
     </select>
      <br><br>
+     
 <button type="submit"> Add Member </button>
 </form>
 </body>

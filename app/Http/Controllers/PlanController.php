@@ -26,7 +26,7 @@ class PlanController extends Controller
         ]);
 
         Plan::create($request->all());
-        return redirect('/plans')->with('success', 'Plan added successfully! 💪');
+        return redirect('/plans')->with('success', 'Plan added successfully! ');
     }
     public function edit($id) {
         $plan = Plan::find($id);
@@ -44,6 +44,6 @@ class PlanController extends Controller
     public function destroy($id) {
         $plan = Plan::find($id);
         $plan->delete();
-        return redirect('/plans')->with('success', 'Plan deleted successfully! 🗑️');
+        return redirect('/plans')->with('success', 'Plan deleted successfully! ');
     }
 }

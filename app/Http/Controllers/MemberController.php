@@ -33,7 +33,7 @@ class MemberController extends Controller
             'plan_id' => 'required',
         ]);
         Member::create($request->all()); //uses the member model to create a new record in the db | grabs all data from the form and saves it
-        return redirect('/')->with('success', 'Member added successfully! 💪'); // after saving the data user will get back to home page!
+        return redirect('/')->with('success', 'Member added successfully! '); // after saving the data user will get back to home page!
     }
     public function edit($id)
     {
@@ -56,7 +56,7 @@ class MemberController extends Controller
     {
         $member = Member::find($id);
         $member->delete();
-        return redirect('/')->with('success', 'Member deleted successfully! 🗑️'); 
+        return redirect('/')->with('success', 'Member deleted successfully! '); 
     }
     
 }
